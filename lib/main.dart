@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gym_manager/screens/adminpage.dart';
+import 'package:gym_manager/screens/attendance_page.dart';
+import 'package:gym_manager/screens/entrypage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,36 +29,35 @@ class MyApp extends StatelessWidget {
             ),
           ),
           body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 80),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Expanded(flex: 3, child: SizedBox(width: 20)),
-                Expanded(
-                  flex: 5,
-                  child: Image.asset(
-                    "attend_bg.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                Expanded(
-                  flex: 15,
-                  child: Image.asset(
-                    "sunriselogo.png",
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Image.asset("entryicon.png", fit: BoxFit.fill),
-                ),
+                sidebutton("images/attend_bg.png", AttendancePage(), 5),
+                sidebutton("images/sunriselogo.png", AdminPage(), 15),
+                sidebutton("images/entryicon.png", EntryPage(), 5),
                 Expanded(flex: 3, child: SizedBox(width: 20))
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class sidebutton extends StatelessWidget {
+  sidebutton(this.img, this.nav, this.f);
+  late String img;
+  late var nav;
+  late int f;
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: f,
+      child: Image.asset(img, fit: BoxFit.fill),
     );
   }
 }
