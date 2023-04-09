@@ -15,30 +15,34 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.amber,
-          appBar: AppBar(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), side: BorderSide.none),
-            // shape: CircleBorder(side: BorderSide.none),
-            title: Center(
-              child: Text(
-                "Sunrise Gym",
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 80),
-            child: Row(
+        child: Container(
+          color: Color(0xffffc450),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(40, 80, 40, 30),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(flex: 3, child: SizedBox(width: 20)),
-                sidebutton("images/attend_bg.png", AttendancePage(), 5),
-                sidebutton("images/sunriselogo.png", AdminPage(), 15),
-                sidebutton("images/entryicon.png", EntryPage(), 5),
-                Expanded(flex: 3, child: SizedBox(width: 20))
+                Expanded(
+                  flex: 10,
+                  child: Row(children: [
+                    Expanded(flex: 3, child: SizedBox(width: 20)),
+                    sidebutton("images/attend_bg.png", AttendancePage(), 5),
+                    sidebutton("images/sunriselogo.png", AdminPage(), 18),
+                    sidebutton("images/entryicon.png", EntryPage(), 5),
+                    Expanded(flex: 3, child: SizedBox(width: 20))
+                  ]),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    "Never Give Up!!",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.black),
+                  ),
+                ),
               ],
             ),
           ),
@@ -57,7 +61,12 @@ class sidebutton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: f,
-      child: Image.asset(img, fit: BoxFit.fill),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => nav));
+        },
+        child: Image.asset(img, fit: BoxFit.fill),
+      ),
     );
   }
 }
