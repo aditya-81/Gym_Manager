@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_manager/screens/adminpage.dart';
 import 'package:gym_manager/screens/attendance_page.dart';
+import 'package:gym_manager/screens/constants.dart';
 import 'package:gym_manager/screens/entrypage.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       home: SafeArea(
         child: Container(
-          color: Color(0xffffc450),
+          color: kbgColor,
           child: Padding(
             padding: EdgeInsets.fromLTRB(40, 80, 40, 30),
             child: Column(
