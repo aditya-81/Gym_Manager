@@ -33,9 +33,14 @@ class AdminPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          "images/sunriselogo.png",
-                          scale: 3,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Image.asset(
+                            "images/sunriselogo.png",
+                            scale: 3,
+                          ),
                         )
                       ],
                     ),
